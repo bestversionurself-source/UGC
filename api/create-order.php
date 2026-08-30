@@ -3,7 +3,7 @@ declare(strict_types=1);
 require dirname(__DIR__) . '/bootstrap.php';
 api_guard(function (): void {
     require_csrf(); $userId = require_user(); $in = json_input(); $plan = (string)($in['plan'] ?? '');
-    $plans = ['starter' => ['amount' => 99900, 'account_plan' => 'creator'], 'growth' => ['amount' => 249900, 'account_plan' => 'creator'], 'performance' => ['amount' => 449900, 'account_plan' => 'studio']];
+    $plans = ['starter' => ['amount' => 299900, 'account_plan' => 'creator'], 'growth' => ['amount' => 699900, 'account_plan' => 'creator'], 'pro' => ['amount' => 1199900, 'account_plan' => 'studio']];
     if (!isset($plans[$plan])) respond(['error' => 'Choose a valid plan.'], 422);
     $key = env_value('RAZORPAY_KEY_ID'); $secret = env_value('RAZORPAY_KEY_SECRET');
     if (!$key || !$secret || str_contains($key, 'replace')) respond(['error' => 'Payment gateway is not configured yet.'], 503);
