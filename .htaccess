@@ -1,0 +1,14 @@
+Options -Indexes
+DirectoryIndex index.php
+<FilesMatch "^\.(env|git)">
+  Require all denied
+</FilesMatch>
+<FilesMatch "\.(sql|md)$">
+  Require all denied
+</FilesMatch>
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://checkout.razorpay.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.razorpay.com; frame-src https://api.razorpay.com https://checkout.razorpay.com"
+</IfModule>
